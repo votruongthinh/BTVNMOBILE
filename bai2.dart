@@ -25,12 +25,12 @@ void main(){
     //tổng thanh toán 
     double tongThanhToan = tienSauGiam + vat;
 
-      // 4. In hóa đơn
-     print("===== HÓA ĐƠN =====");
+    // 4. In hóa đơn
+    print("===== HÓA ĐƠN =====");
     print("Tên sản phẩm: $tenSanPham");
-     print("Số lượng: $soLuongMua");
+    print("Số lượng: $soLuongMua");
     print("Đơn giá: $donGia");
-     print("Thành tiền: $thanhTien");
+    print("Thành tiền: $thanhTien");
     print("Giảm giá: $giamGia");
     print("VAT: $vat");
     print("Tổng thanh toán: $tongThanhToan");
