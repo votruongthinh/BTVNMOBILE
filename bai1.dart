@@ -1,41 +1,41 @@
-void main(){
-    String hoTen = "Võ Trường Thịnh";
-    double soGioLam = 45;
-    double luongMoiGio = 300000;
+void main() {
+  Employee e = Employee(name: "Thịnh", hour: 50, salaryPerHour: 350000);
+  print(e.gross());
+  print(e.net());
+}
 
-    //tính tổng lương 
-    double tongLuong = soGioLam * luongMoiGio;
+class Employee {
+  final String name;
+  final double hour;
+  final double salaryPerHour;
 
-    //2.Phụ cấp
-    double phuCap = 0;
+  Employee({
+    required this.name,
+    required this.hour,
+    required this.salaryPerHour,
+  });
 
-    //2.1 kiểm tra nếu số giờ làm trên 40 giờ thì thưởng thêm 20%
-    if(soGioLam > 40){
-        phuCap = tongLuong * 0.2;
+  double gross() {
+    final totalSalary = hour * salaryPerHour;
+    if (this.hour > 40) {
+      final bonus = totalSalary * 0.2;
+      return totalSalary + bonus;
     }
+    return totalSalary;
+  }
 
-    double luongTruocThue = tongLuong + phuCap;
-
-    //3.Thuế
-    double thue = 0;
-
-    if(luongTruocThue > 10000000){
-        thue = luongTruocThue * 0.1;
-
-    }else if(luongTruocThue >= 7000000){
-        thue = luongTruocThue * 0.05;
-    }else{
-        thue = 0;
+  double net() {
+    final grossSalary = gross();
+    if (grossSalary > 10000000) {
+      final tax = (grossSalary * 0.1);
+      print(tax);
+      return grossSalary - tax;
+    } else if (grossSalary >= 7000000) {
+      final tax = (grossSalary * 0.05);
+      print(tax);
+      return grossSalary - tax;
+    } else {
+      return grossSalary;
     }
-
-    //lương thực lãnh 
-    double luongThucLanh = luongTruocThue - thue;
-
-    print("======= Thông tin nhân viên =======");
-    print("họ và tên : $hoTen");
-    print("Tổng lương :$tongLuong");
-    print("Phụ cấp: $phuCap");
-    print("Luong trước thuế: $luongTruocThue");
-    print("Thuế:$thue");
-    print("Lương thực lãnh:$luongThucLanh");
+  }
 }
